@@ -1,19 +1,43 @@
 function calculate(calculationSteps) {
-    let i = 0;
-    let firstValue = calculationSteps[0]
-    let secondValue = calculationSteps [2]
+    let nums = []
+    let operator = ''
+    let operators = ['+','-','/','*']
 
-    // if item is a string convert to a number
-    if(calculationSteps[i].typeOf === 'string'){
-        Number(firstValue)
+    for (let i = 0; i < calculationSteps.length; i++) {
+        if (calculationSteps[i] === null){
+            nums.push(0)
+            continue
+        } 
+        if (operators.includes(calculationSteps[i])) {
+            operator = calculationSteps[i]
+            continue
+        } 
+        
+        if (calculationSteps[i] === undefined || calculationSteps[i] === '' || isNaN (parseFloat(calculationSteps[i])))
+        {
+            continue
+        }
+        nums.push(Number(calculationSteps[i]))
     }
-     // use converted value to complete operation
-    if (calculationSteps.includes('*')){
-        return firstValue * secondValue
+console.log (nums)
+console.log (operator)
+    if (nums.length !== 2 || operator.length !== 1) {
+        return NaN
+    }
+    
+    if (operator === '-'){
+        return nums[0] - nums [1]
+    }
+    if (operator === '+'){
+        return nums[0] + nums [1]
+    }
+    if (operator === '*'){
+        return nums[0] * nums [1]
+    }
+    if (operator === '/'){
+        return nums[0] / nums [1]
+    }
+}
 
-    }
-    if (calculationSteps.includes(null) && calculationSteps.includes('+')){
-        null === 0
-    } return firstValue + secondValue
-   }
+   
 module.exports = calculate
