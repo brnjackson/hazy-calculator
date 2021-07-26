@@ -19,8 +19,7 @@ function calculate(calculationSteps) {
         }
         nums.push(Number(calculationSteps[i]))
     }
-console.log (nums)
-console.log (operator)
+
     if (nums.length !== 2 || operator.length !== 1) {
         return NaN
     }
